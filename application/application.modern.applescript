@@ -1,6 +1,6 @@
 on run {input, parameters}
   tell application "Finder"
-    set dir_path to quoted form of (POSIX path of (folder of the front window as alias))
+    set dir_path to quoted form of (POSIX path of (container of folder of the front window as alias))
   end tell
   CD_to(dir_path)
   tell application "iTerm" to activate
@@ -22,7 +22,7 @@ on CD_to(theDir)
     end try
 
     tell sesh
-	write text "cd " & theDir & ";"
+	write text "cd " & theDir & ";clear;"
     end tell
   end tell
 end CD_to
